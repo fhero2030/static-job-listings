@@ -1,4 +1,4 @@
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next";
 import Image from "next/image";
 
 import { Typography, Stack, Box, Paper } from "@mui/material";
@@ -22,7 +22,7 @@ type Job = {
   tools: string[];
 };
 
-const Home: NextPage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [jobs, setJobs] = useState<Job[] | undefined>(data);
 
   return (
@@ -64,7 +64,7 @@ const Home: NextPage = ({ data }: InferGetStaticPropsType<typeof getStaticProps>
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const res = await fetch("http:localhost:3000/api/jobs");
   const data = await res.json();
   return {
