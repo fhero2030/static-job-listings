@@ -58,7 +58,7 @@ const Home: NextPage = () => {
       <Box
         maxWidth="xl"
         sx={{
-          width: "80%",
+          width: { md: "80%", xs: "95%" },
           bgcolor: "primary",
           height: "100%",
           m: "75px auto",
