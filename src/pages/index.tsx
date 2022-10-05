@@ -65,7 +65,7 @@ const Home: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSi
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const res = await fetch("http:localhost:3000/api/jobs");
+  const res = await fetch("http://localhost:3000/api/jobs");
   const data = await res.json();
   return {
     props: {
