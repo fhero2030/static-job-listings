@@ -1,10 +1,18 @@
-import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next";
+import type { NextPage } from "next";
 import Image from "next/image";
 
-import { Typography, Stack, Box, Paper } from "@mui/material";
+import { Stack, Box } from "@mui/material";
 import JobCard from "../components/job-card";
 
-import { useState } from "react";
+import useSWR from "swr";
+
+//Write a fetcher function to wrap the native fetch function and return the result of a call to url in json format
+const fetcher = (url: string) =>
+  fetch(url).then(async (res) => {
+    const response = await res.json();
+    const data = await JSON.parse(response);
+    return data;
+  });
 
 type Job = {
   id: number;
@@ -22,8 +30,13 @@ type Job = {
   tools: string[];
 };
 
-const Home: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const [jobs, setJobs] = useState<Job[] | undefined>(data);
+const Home: NextPage = () => {
+  const { data, error } = useSWR("/api/jobs", fetcher);
+
+  console.log(data);
+  // if (!data) {
+  //   return <div></div>;
+  // }
 
   return (
     <>
@@ -53,7 +66,7 @@ const Home: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSi
         }}
       >
         <Stack rowGap={{ lg: 3, xs: 5 }}>
-          {jobs?.map((job: Job) => (
+          {data?.map((job: Job) => (
             <JobCard key={job.id} job={job} />
           ))}
         </Stack>
@@ -64,12 +77,12 @@ const Home: NextPage = ({ data }: InferGetServerSidePropsType<typeof getServerSi
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const res = await fetch("http://localhost:3000/api/jobs");
-  const data = await res.json();
-  return {
-    props: {
-      data: JSON.parse(data),
-    },
-  };
-};
+// export const getServerSideProps: GetServerSideProps = async (ctx) => {
+//   const res = await fetch("http://localhost:3000/api/jobs");
+//   const data = await res.json();
+//   return {
+//     props: {
+//       data: JSON.parse(data),
+//     },
+//   };
+// };

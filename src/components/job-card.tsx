@@ -63,7 +63,7 @@ const JobCard = ({ job }: Props) => {
             <Image src={job.logo} alt={job.company} width="100" height="100" layout="responsive" />
           </Box>
         </Box>
-
+            
         <Stack
           sx={{
             justifyContent: "space-between",
