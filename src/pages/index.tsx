@@ -33,28 +33,19 @@ type Job = {
 const Home: NextPage = () => {
   const { data, error } = useSWR("/api/jobs", fetcher);
 
-  console.log(data);
-  // if (!data) {
-  //   return <div></div>;
-  // }
-
   return (
     <>
       <Box
         sx={{
-          width: "100%",
-          maxHeight: "170px",
           bgcolor: "primary.main",
+          position: "relative",
+          maxHeight: "156px",
+          height: "20vh",
         }}
       >
-        <Image
-          alt="header-bg"
-          src="/images/bg-header-desktop.svg"
-          width="1580"
-          height="170"
-          layout="responsive"
-        />
+        <Image alt="header-bg" src="/images/bg-header-desktop.svg" layout="fill" height={156} />
       </Box>
+
       <Box
         maxWidth="xl"
         sx={{

@@ -2,9 +2,6 @@ import React from "react";
 import { Typography, Stack, Box, Paper } from "@mui/material";
 import Image from "next/image";
 
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-
 type Job = {
   id: number;
   company: string;
@@ -26,9 +23,6 @@ type Props = {
 };
 
 const JobCard = ({ job }: Props) => {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("xs"));
-
   return (
     <Paper
       elevation={4}
@@ -63,7 +57,7 @@ const JobCard = ({ job }: Props) => {
             <Image src={job.logo} alt={job.company} width="100" height="100" layout="responsive" />
           </Box>
         </Box>
-            
+
         <Stack
           sx={{
             justifyContent: "space-between",
