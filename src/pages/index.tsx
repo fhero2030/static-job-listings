@@ -39,11 +39,23 @@ const Home: NextPage = () => {
         sx={{
           bgcolor: "primary.main",
           position: "relative",
+          width: "100%",
           maxHeight: "156px",
           height: "20vh",
+          backgroundImage: {
+            md: "url(/images/bg-header-desktop.svg)",
+            sm: "url(/images/bg-header-mobile.svg)",
+            sx: "url(/images/bg-header-mobile.svg)",
+          },
         }}
       >
-        <Image alt="header-bg" src="/images/bg-header-desktop.svg" layout="fill" height={156} />
+        {/* <Image
+          alt="header-bg"
+          src="/images/bg-header-desktop.svg"
+          layout="fill"
+          height={156}
+          objectFit="cover"
+        /> */}
       </Box>
 
       <Box
