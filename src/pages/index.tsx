@@ -186,6 +186,7 @@ const Home: NextPage = () => {
               minWidth: "100px",
             }}
             inputProps={{
+              autoComplete: "new-password",
               style: {
                 padding: 0,
               },

@@ -124,9 +124,9 @@ const JobCard = ({ job }: Props) => {
             }}
           >
             <Typography>{job.postedAt}</Typography>
-            <Typography>.</Typography>
+            <Typography>&#183;</Typography>
             <Typography>{job.contract}</Typography>
-            <Typography>.</Typography>
+            <Typography>&#183;</Typography>
             <Typography>{job.location}</Typography>
           </Stack>
         </Stack>

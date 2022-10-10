@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Head from "next/head";
 
 const theme = createTheme({
   palette: {
@@ -30,6 +31,7 @@ const theme = createTheme({
 
   typography: {
     fontSize: 15,
+    fontFamily: ["League Spartan", "Roboto"].join(","),
   },
 });
 
